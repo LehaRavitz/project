@@ -1,0 +1,110 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <body>
+<form name="a12" dir="rtl" #chekingdata1="ngForm" (ngSubmit)="OnSubmit()">
+
+  <div *ngFor="let numTeacher of teteacherSearchToDeterminateacherSearch " style=" width:25%; float: right; ">
+ 
+      <br>
+      <br>
+    
+      <div class="container-fluid" >
+    <div class="card-deck-wrapper">
+      <div class="card-deck">
+        <div class="card  " >
+          <div style="text-align: right" class="card-header">{{numTeacher.teacher.FirstName}} {{numTeacher.teacher.LastName}} </div>
+          <div class="card-body" style="text-align: right">
+          
+            <p class="card-text"> מחיר: {{numTeacher.Price}}
+                <p class="card-text"> עיר: {{numTeacher.teacher.City}}
+                    <p class="card-text"> רחוב: {{numTeacher.teacher.Street}}
+                 
+              
+            </p>
+         <a class="card-link" for="modal-1" data-toggle="modal" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-gray w3-large"
+                (click)="onClickMe(numTeacher.teacher.id)">      לקביעת שיעור           </a>
+                
+
+         
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+  </div>
+
+
+
+    <div class="w3-container " >
+        <br>
+        <div id="id01" name="openModal"  class="w3-modal">
+            <br><br><br><br>
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px; max-height:600px">
+              
+                <div class="w3-center"> 
+                     <h2 class="bg-img2"> <br>
+                    <p>בחר יום ושעה</p>     
+                    </h2>
+                    <br>
+                    <span onclick="document.getElementById('id01').style.display='none'" class="btn btn-link w3-xlarge  w3-display-topright"
+                        title="Close Modal" style="color:white;">&times;</span>
+
+                </div>
+
+               
+                <div class="w3-container" action="/action_page.php">
+                    <div class="w3-section">
+                        <div >
+                            <div class="input-group">
+                               
+                                <div>
+                                    <select name="dayStudentSelect" class=" custom-select rounded" [(ngModel)]="dayStudentSelect" (change)="onChange(dayStudentSelect)">
+                                        <option value="0">בחר יום:</option>
+                                        <option *ngFor="let lang of dayOfTeacherTeach" value={{lang.id}}>
+                                          {{lang.name}}
+                                        </option>
+                                      </select>
+                                   
+                                  </div>
+                              </div>
+                            <br>
+                            <div class="input-group">
+                               
+                                <div>
+                                    <select name="hoursTeacher" class=" custom-select rounded" [(ngModel)]="schedule.BeginningTime">
+                                      <option value="0">בחר שעה:</option>
+                                      <option *ngFor="let lang of hoursOfTeacherTeach" value={{lang.BeginningTime}}>
+                                        {{lang.BeginningTime}}
+                                      </option>
+                                    </select>
+                                  </div>
+                              </div>
+                            </div>
+                              <br>
+                              <!-- <input type="date" [(ngModel)]="dateOfLesson" name="dateOfLesson"> -->
+                        <!-- <button type="button" (click)="login()"  class="btn  btn-lg btn-block  bg-img " name="hyfg" value="Save" >כניסה</button> -->
+                        <br>
+                       
+                        
+                         
+                    </div>
+                </div>
+
+                <div class="w3-container w3-border-top   bg-img3 w3-padding-8">
+                    <!-- <button type="button" (click)="teacherRegister()"  class="btn btn-link"style=" color:white;">לקביעה סופית</button> -->
+                    <button type="submit" class="btn btn-link"style=" color:white;">לקביעה סופית</button>
+                    
+                   
+                </div>
+
+            </div>
+        </div>
+</div>
+</form>
+</body>

@@ -1,0 +1,23 @@
+.double {
+    zoom: 1;
+    transform: scale(2);
+    -ms-transform: scale(2);
+    -webkit-transform: scale(2);
+    -o-transform: scale(2);
+    -moz-transform: scale(2);
+    transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    margin-right: 22px;
+    margin-top: 15px;
+    margin-left: 20px;
+  }
+  .hh{
+    width: 50px;
+    float: right;
+    font-size: medium;
+  }
+ 

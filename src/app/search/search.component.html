@@ -1,0 +1,190 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+<ngb-carousel *ngIf="3"  >
+  <ng-template ngbSlide>
+    <img src="\assets\move4.jpg" alt="Random first slide" style="width: 100%; height: 450px;">
+    <div class="carousel-caption">
+      
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <img src="\assets\move2.jpg" alt="Random second slide" style="width: 100%; height: 450px;">
+    <div class="carousel-caption">
+     
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <img src="\assets\move.jpg" alt="Random third slide" style="width: 100%; height: 450px;">
+    <div class="carousel-caption">
+     
+    </div>
+  </ng-template>
+</ngb-carousel>
+
+<form name="a12" dir="rtl" class="form-group" #chekingdata1="ngForm" (ngSubmit)="OnSubmit()">
+  
+  <div style="float: right; margin-top: 30px; ">
+  <div style="float: right;" class="styleSelect">  
+   
+          <select  name="filter" [(ngModel)]="filter"class=" custom-select rounded" style="width: 160px; height: 50px; border-color:blueviolet; border-width: 3px; margin-right: 90px; "> 
+              <option value="undefined">מיון לפי</option>  
+
+            
+             
+                                   <option value="1">מהגבוה לנמוך</option>    
+                                   <option value="2">מהנמוך לגבוה</option> 
+            </select>  
+      </div>  
+  
+      <div style="float: right;">  
+         
+              <select  class=" custom-select rounded" style="width: 160px; height: 50px; border-color:blueviolet; border-width: 3px; margin-right: 90px;"  name="subject" [(ngModel)]="search.subject" >  
+                  <option value="undefined">מקצוע</option>  
+                
+                                       <option *ngFor="let lang of languages">
+                                        
+                                           {{lang.SubjectName}}  
+                                       </option>  
+                </select>  
+          </div>    
+          <div style="float: right;">  
+          
+                <select name="city" class="custom-select rounded" style="width: 160px; height: 50px; border-color:blueviolet; border-width: 3px; margin-right: 90px;" [(ngModel)]="search.city"  (change)="onChange(search.city)">  
+                                         <option value="undefined">עיר</option>  
+                                         <option *ngFor="let lang of cities"  
+                                          value={{lang}}>
+                                             {{lang}}  
+             </option>
+                  </select>  
+            </div>
+        
+            <div style="float: right;">  
+    
+                  <select name="street" class="custom-select  rounded"  style="width: 160px; height: 50px; border-color:blueviolet; border-width: 3px; margin-right: 90px;" [(ngModel)]="search.street" >
+                                           <option value="undefined">רחוב</option>  
+                                           <option *ngFor="let lang of strretsSelected"  
+                                            value={{lang}} [selected]="iuytre" >
+                                               {{lang}}  
+               </option>
+                    </select>  
+              </div>
+              <button type="submit" style="width: 160px; height: 50px; color:blueviolet; margin-right: 90px;">כניסה</button>
+            </div>
+  
+  
+</form>
+<router-outlet></router-outlet>
+<div *ngFor="let numTeacher of returnSearch ">
+    <p style="background-color: blueviolet">{{numTeacher.teacher.FirstName}} </p> 
+
+  <p style="background-color: rgb(121, 82, 158)">{{numTeacher.teacher.priceMin}}</p> 
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--login-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="form-group"  >
+    <!-- <input type="button" class="btn btn-success" name="101" value="Save"  (click)="saveTimeOfLesson()"/> -->
+
+
+
+
+
+    <!--   pupilRegister="ngForm" (ngSubmit)="OnSubmit()" -->
+
+
+    <div class="w3-container " >
+        <br>
+        <div id="id01" class="w3-modal">
+            <br><br><br><br>
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px; max-height:600px">
+              
+                <div class="w3-center"> 
+                     <h2 class="bg-img2"> <br>
+                    <p>ברוך הבא</p>     
+                    </h2>
+                    <br>
+                    <span onclick="document.getElementById('id01').style.display='none'" class="btn btn-link w3-xlarge  w3-display-topright"
+                        title="Close Modal" style="color:white;">&times;</span>
+
+                </div>
+
+               
+                <div class="w3-container" action="/action_page.php">
+                    <div class="w3-section">
+                        
+
+                            <div class="input-group">
+                               
+                                <input dir="rtl" id="email" type="text"  required class="form-control" name="Username" placeholder="שם משתמש:"  [(ngModel)]="userName" style="width: 300px; margin-left: 85px;">
+                                <!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>   -->
+                              </div>
+                            <br>
+                           
+                           
+
+                      
+
+                       
+                            <div class="input-group">
+                               
+                                <input dir="rtl" id="password" type="password" class="form-control" name="password" placeholder="סיסמא" [(ngModel)]="password" minlength="4" max="8" style="width: 300px; margin-left: 85px;">
+                                 <!-- <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> -->
+                              </div>
+                              <br>
+                             
+                        <button type="button" (click)="login()"  class="btn  btn-lg btn-block  bg-img " name="hyfg" value="Save" >כניסה</button>
+                        <br>
+                       
+                        
+                         
+                    </div>
+                </div>
+
+                <div class="w3-container w3-border-top   bg-img3 w3-padding-8">
+                    <button type="button" (click)="teacherRegister()" class="btn btn-link " style="color:white;">הרשם כמורה</button>
+                    <button type="button" (click)="pupilRegister()" class="btn btn-link" style="color:white;">הרשם כתלמיד</button>
+                    <button onclick="document.getElementById('id01').style.display='none'" type="button" class="btn btn-link" style="color:white;">ביטול</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,179 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="id2" style="
+margin-left: 250px;
+">
+  <form name="a12" action="/action_page.php" class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" #pupilRegister="ngForm" style="height: 500px; width:800px; "
+    (ngSubmit)="OnSubmit()">
+    <input type="submit" class="w3-rest" name="hyfg" value="Save" style="    display: inline-block;
+    position: absolute;
+    margin-top: 30%;
+    margin-left: 50px;
+    width: 120px;
+    height: 60px;">
+    <h2 class="w3-center">רישום תלמיד/ה</h2>
+    <div style="margin-left:220px;">
+      <div class="w3-row w3-section" style="display: inline-block;">
+        <div class="w3-col" style="width:40px; float:right; margin-left: 20px; ">
+          <i class="w3-xxlarge fa fa-user" style="  width: 50px;
+          float: right;
+         
+          margin-top: 16px;"></i>
+        </div>
+        <div class="w3-rest">
+          <input dir="rtl" class="w3-input w3-border" name="first" type="text" required placeholder="שם פרטי:" [(ngModel)]="myPupil.FirstName"
+            #FirstName="ngModel" style="width: 200px;float: right; ">
+        </div>
+        <div *ngIf="FirstName.errors?.required && FirstName.touched" class="alert alert-danger">The FirstName is required</div>
+      </div>
+
+
+      <div class="w3-row w3-section" style="display: inline-block;">
+        <div class="w3-col" style="width:40px; float:right; margin-left: 20px; ">
+          <i class="w3-xxlarge fa fa-user" style="  width: 50px;
+          float: right;
+         
+          margin-top: 16px;"></i>
+        </div>
+        <div class="w3-rest">
+          <input dir="rtl" class="w3-input w3-border" type="text" placeholder="שם משפחה:" required name="LastName" [(ngModel)]="myPupil.LastName"
+            #LastName="ngModel" style="width: 200px;float: right; ">
+        </div>
+        <div *ngIf="LastName.errors?.required && LastName.touched" class="alert alert-danger">The LastName is required</div>
+      </div>
+
+
+      <div class="w3-row w3-section" style="display: inline-block;">
+        <div class="w3-col" style="width:40px; float:right; margin-left: 20px; ">
+          <i class="w3-xxlarge fa fa-user" style="  width: 50px;
+          float: right;
+         
+          margin-top: 16px;"></i>
+        </div>
+        <div class="w3-rest">
+          <input dir="rtl" class="w3-input w3-border" type="text" placeholder="שם משתמש:" required name="Username" [(ngModel)]="myPupil.Username"
+            #Username="ngModel" style="width: 200px;float: right; ">
+        </div>
+        <div *ngIf="Username.errors?.required && Username.touched" class="alert alert-danger">The Username is required</div>
+      </div>
+
+      <div class="w3-row w3-section" style="display: inline-block;">
+        <div class="w3-col" style="width:40px; float:right; margin-left: 20px; ">
+          <i class="w3-xxlarge fa fa-envelope-o" style="  width: 50px;
+          float: right;
+         
+          margin-top: 16px;"></i>
+        </div>
+        <div class="w3-rest">
+          <input dir="rtl" class="w3-input w3-border" name="email" type="text" placeholder="מייל:" [(ngModel)]="myPupil.Email" required
+            #Email="ngModel" style="width: 200px;float: right; ">
+        </div>
+        <div type="text" class="alert alert-danger" *ngIf="!Email.valid && Email.touched">The Email is required</div>
+      </div>
+
+      <div class="w3-row w3-section" style="display: inline-block;">
+        <div class="w3-col" style="width:40px; float:right; margin-left: 20px; ">
+          <i class="w3-xxlarge fa fa-envelope-o" style="  width: 50px;
+          float: right;
+         
+          margin-top: 16px;"></i>
+        </div>
+        <div class="w3-rest" >
+          <input dir="rtl" class="w3-input w3-border" name="password" type="password" placeholder="סיסמא:" [(ngModel)]="myPupil.Password"
+            minlength="4" max="8" #Password="ngModel" style="width: 200px;float: right;margin-bottom: 0px ">
+        </div>
+        <div type="text" class="alert alert-danger" *ngIf="!Email.valid && Email.touched">The Email is required</div>
+      </div>
+
+
+
+      <div class="w3-row w3-section" style="display: inline-block;">
+        <div class="w3-col" style="width:40px; float:right; margin-left: 20px; ">
+          <i class="w3-xxlarge fa fa-briefcase" style="  width: 50px;
+          float: right;
+         
+          margin-top: 16px;"></i>
+        </div>
+        <div class="w3-rest">
+          <input dir="rtl" class="w3-input w3-border" type="text" placeholder="רחוב:" required name="Street" [(ngModel)]="myPupil.Street"
+            #Street="ngModel" style="width: 200px;float: right; ">
+        </div>
+        <div *ngIf="Street.errors?.required && Street.touched" class="alert alert-danger">The Street is required</div>
+      </div>
+
+      <div class="w3-row w3-section" style="display: inline-block;">
+        <div class="w3-col" style="width:40px; float:right; margin-left: 20px; ">
+          <i class="w3-xxlarge fa fa-home" style="  width: 50px;
+          float: right;
+         
+          margin-top: 16px;"></i>
+        </div>
+        <div class="w3-rest">
+          <input dir="rtl" class="w3-input w3-border" type="text" placeholder="עיר:" required name="City" [(ngModel)]="myPupil.City"
+            #City="ngModel" style="width: 200px;float: right; ">
+        </div>
+        <div *ngIf="City.errors?.required && City.touched" class="alert alert-danger">The City is required</div>
+      </div>
+
+      <div class="w3-row w3-section" style="display: inline-block;">
+        <div class="w3-col" style="width:40px; float:right; margin-left: 20px; ">
+          <i class="w3-xxlarge fa fa-pencil" style="  width: 50px;
+          float: right;
+         
+          margin-top: 16px;"></i>
+        </div>
+        <div class="w3-rest">
+          <input dir="rtl" class="w3-input w3-border" type="text" placeholder="שכבה:" required name="IdGrade" [(ngModel)]="myPupil.IdGrade"
+            #IdGrade="ngModel" style="width: 200px;float: right; ">
+        </div>
+        <div *ngIf="IdGrade.errors?.required && IdGrade.touched" class="alert alert-danger">The IdGrade is required</div>
+
+      </div>
+      
+      <div class="w3-row w3-section" style="display: inline-block;">
+        <div class="w3-col" style="width:40px; float:right; margin-left: 20px; ">
+          <i class="w3-xxlarge fa fa-phone" style="  width: 50px;
+          float: right;
+         
+          margin-top: 16px;"></i>
+        </div>
+        <div class="w3-rest">
+          <input dir="rtl" class="w3-input w3-border" type="text" placeholder="טלפון הורים:" required name="PhoneParents" [(ngModel)]="myPupil.PhoneParents"
+            #PhoneParents="ngModel" style="width: 200px;float: right; ">
+        </div>
+        <div *ngIf="PhoneParents.errors?.required && PhoneParents.touched" class="alert alert-danger">The PhoneParents is required</div>
+      </div>
+
+      <div class="w3-row w3-section" style="display: inline-block;">
+        <div class="w3-col" style="width:40px; float:right; margin-left: 20px; ">
+          <i class="w3-xxlarge fa fa-phone" style="  width: 50px;
+          float: right;
+         
+          margin-top: 16px;"></i>
+        </div>
+        <div class="w3-rest" style="display: inline-block;">
+          <input dir="rtl" class="w3-input w3-border" type="text" placeholder="טלפון תלמיד/ה:" required name="PhonePupil" [(ngModel)]="myPupil.PhonePupil"
+            #PhonePupil="ngModel" style="width: 200px;float: right; ">
+        </div>
+        <div *ngIf="PhonePupil.errors?.required && PhonePupil.touched" class="alert alert-danger">The PhonePupil is required</div>
+
+      </div>
+    
+
+
+
+
+      
+
+
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,88 @@
+<!-- <h1 *ngIf="IsRegisteredTeacher==false"> welcom to  {{userId}}!! -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<form name="myForm" #chekingdata1="ngForm" (ngSubmit)="OnSubmit()" >
+<div style="position: absolute; margin-left:13% ;margin-top:-20px;">
+  <p class="hh" style="    margin-left: 10px;
+  ">ראשון</p>
+  <p class="hh" style="    margin-left:15px;
+  ">שני</p>
+  <p class="hh">שלישי</p>
+  <p class="hh">רביעי</p>
+  <p class="hh">חמישי</p>
+  </div>
+<form name="myForm2" #chekingdata1="ngForm" (ngSubmit)="OnSubmitSubjects()" style="float: right;margin-right: 13%; width: 500px; margin-top: 3%;">
+  <div class="form-group" >
+   <label style="float: right;" >:הכניסי סכום לשיעור</label><br>
+      <input type="text" name="priceForLesson" class="form-control" style="height: 40px;" [(ngModel)]="teacherProfession.Price"  >
+    </div>
+
+<div class="form-group">
+ <label style="float: right;">:מקצוע</label><br>
+  <select name="subject" class=" custom-select rounded" style="height: 40px;"  [(ngModel)]="teacherProfession.IdSubject">
+    <option value="0">--Select--</option>
+    <option *ngFor="let lang of subjectsTeacher" value={{lang.id}}   >
+      {{lang.SubjectName}}
+    </option>
+  </select> 
+</div>
+<div class="form-group">
+ <label style="float: right;">:כיתה</label><br>
+  <select name="city" class=" custom-select rounded" style="height: 40px;" [(ngModel)]="teacherProfession.IdGrade">
+    <option value="undefined"></option>
+    <option *ngFor="let lang of grades" value={{lang.Id}}>
+      {{lang.Description}}
+    </option>
+  </select> 
+</div>
+
+<!-- <div class="form-group">
+<label style="float: right;">הכנס שעת התחלה</label><br>
+  <input type="time"  class="form-control" name="sf" [(ngModel)]="BeginningTimeStr" #BeginningTime="ngModel"> </div>
+<div class="form-group">
+<label style="float: right;">הכנס שעת סיום</label><br>
+  <input type="time" class="form-control" name="sf" [(ngModel)]="EndTimeStr" #EndTime="ngModel"></div> -->
+
+  <input type="submit" class="btn btn-success" name="fg" value="Save" />
+
+<!-- <input type="button" class="btn btn-success" name="101" value="שמור שעות" (click)="saveTimeOfLesson()" /> -->
+</form>
+
+
+<div style="margin-left: 12%;margin-top: 3%;" >
+
+  <router-outlet>
+    <table >
+      
+      <tr *ngFor="let item of arrayRowsLeasson" class="form-row">
+       
+        <td>
+          <input type="checkbox"  class="double" (change)="item.isCheck=true; checkLesson(item, 5)" [value]="item.isCheck" style="display:inline-block"
+            name="1" /></td>
+          <td>
+            <input type="checkbox"  class="double"(change)="item.isCheck=true; checkLesson(item, 4)" [value]="item.isCheck" style="display:inline-block"
+              name="2" /></td>
+            <td>
+              <input type="checkbox"  class="double"(change)="item.isCheck=true; checkLesson(item, 3)" [value]="item.isCheck" style="display:inline-block"
+                name="3" /></td>
+              <td>
+                <input type="checkbox"  class="double"(change)="item.isCheck=true; checkLesson(item, 2)" [value]="item.isCheck" style="display:inline-block"
+                  name="4" /></td>
+                <td>
+                  <input type="checkbox" class="double" (change)="item.isCheck=true; checkLesson(item, 1)" [value]="item.isCheck" style="display:inline-block"
+                    name="5" /></td>
+                    <td style="margin-top:6%;">
+                        <p>{{item.beginningTime/3600000}}:00 - {{item.beginningTime/3600000+1}}:00</p>
+                      </td>
+      </tr>
+    </table>
+    <input type="submit" class="btn btn-success" name="hyfg" value="Save" />
+  </router-outlet>
+</div>
+
+
+</form>

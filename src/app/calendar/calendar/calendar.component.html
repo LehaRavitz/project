@@ -1,0 +1,170 @@
+<div class="calendar-section">
+
+    <ng-template #modalContent1 let-close="close">
+<div class="form-group"  >
+    <div class="w3-container " >
+        <br>
+        <div id="id01" class="w3-modal">
+            <br><br><br><br>
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px; max-height:600px">
+                <div class="w3-center"> 
+                    <button type="button" class="close" (click)="close()">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                     <h2 class="bg-img2"> <br>
+                    <p>שיעור חדש</p>     
+                    </h2>
+                    <br>
+                    <span onclick="document.getElementById('id01').style.display='none'" class="btn btn-link w3-xlarge  w3-display-topright"
+                        title="Close Modal" style="color:white;">&times;</span>
+                </div>
+                <div class="w3-container" action="/action_page.php">
+                    <div class="w3-section">
+                        <select  class=" custom-select rounded" style="width: 160px; height: 50px; border-color:blueviolet; border-width: 3px; margin-right: 90px;"  name="subject" [(ngModel)]="sss"  (change)="onChange()" >  
+                            <option value="undefined">מקצוע</option>  
+                          
+                                                 <option *ngFor="let lang of languages" value={{lang.id}}>
+                                                  
+                                                     {{lang.SubjectName}}  
+                                                 </option>  
+                          </select>  
+                            <br>
+                           
+                              <br>
+                              <select  class=" custom-select rounded" style="width: 160px; height: 50px; border-color:blueviolet; border-width: 3px; margin-right: 90px;"  name="subject" [(ngModel)]="time"   >  
+                                  <option value="undefined">שעה</option>  
+                                
+                                                       <option *ngFor="let lang of teacherSearchBySandD" >
+                                                        
+                                                           {{lang.BeginningTime}}  
+                                                       </option>  
+                                </select>  
+                        <button type="button" (click)="login()"  class="btn  btn-lg btn-block  bg-img " name="hyfg" value="Save" >כניסה</button>
+                        <br>
+                    </div>
+                </div>
+                <div class="w3-container w3-border-top   bg-img3 w3-padding-8">
+                    <button onclick="document.getElementById('id01').style.display='none'" type="button" class="btn btn-link" style="color:white;">ביטול</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</ng-template>
+  <ng-template #modalContent let-close="close">
+    <div class="modal-header">
+      <h5 class="modal-title">Event action occurred</h5>
+      <button type="button" class="close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+        Action:
+        <pre>{{ modalData?.action }}</pre>
+      </div>
+      <div>
+        Event:
+        <pre>{{ modalData?.event | json }}</pre>
+      </div>
+    </div>
+    <div style="color:#7a860b"></div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+    </div>
+  </ng-template>
+
+  <div class="row text-center">
+    <div class="col-md-4">
+      <div class="btn-group">
+        <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">
+          הקודם
+        </div>
+        <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+          היום
+        </div>
+        <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">
+          הבא
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'he' }}</h3>
+    </div>
+    <div class="col-md-4">
+      <div class="btn-group">
+        <div class="btn btn-primary" (click)="view = 'month'" [class.active]="view === 'month'">
+          חודש
+        </div>
+        <div class="btn btn-primary" (click)="view = 'week'" [class.active]="view === 'week'">
+          שבוע
+        </div>
+        <div class="btn btn-primary" (click)="view = 'day'" [class.active]="view === 'day'">
+          יום
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" [dir]="ltr" [locale]="locale" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"
+    (dayClicked)="dayClicked($event.day)" (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+<input type="button" class="btb click" value="לקביעת שיעור חד פעמי">
+<input type="button" class="btb click" value="לקביעת שיעור חד פעמי">
+<p>ytr</p>
+
+  </mwl-calendar-month-view>
+  <br>
+  <br>
+  <br>
+
+  <h3>
+    Edit events
+    <button class="btn btn-primary pull-right" (click)="addEvent()">
+      Add new
+    </button>
+    <div class="clearfix"></div>
+  </h3>
+
+  <table class="table table-bordered">
+
+    <thead>
+      <tr>
+        <th>סכום</th>
+        <th>  יתאריך</th>
+        <th>תאריך התחלה</th>
+        <th>מקצוע</th>
+        <th>פרטי המורה</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let event of events; let index = index">
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()">
+        </td>
+        <td>
+          <input type="color" [(ngModel)]="event.color.primary" (change)="refresh.next()">
+        </td>
+        <td>
+          <input type="color" [(ngModel)]="event.color.secondary" (change)="refresh.next()">
+        </td>
+        <td>
+          <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start" (ngModelChange)="refresh.next()" [altInput]="true"
+            [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set">
+        </td>
+        <td>
+          <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end" (ngModelChange)="refresh.next()" [altInput]="true"
+            [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="Not set">
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="events.splice(index, 1); refresh.next(); deleteLesson()">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>

@@ -1,0 +1,29 @@
+<form name="myForm" #chekingdata1="ngForm" (ngSubmit)="OnSubmit()">
+ 
+
+
+
+
+<table *ngIf="arrayRowsLeasson" >   <tr>
+    <td>     </td>
+    <td>חמישי</td> <td>רביעי</td><td>שלישי</td><td>שני</td> <td>ראשון</td>
+  </tr>
+<tr *ngFor="let r of arrayRowsLeasson;let i=index" class="form-row">
+  <td *ngFor="let item of r;let j=index" class="form-row">
+      <!-- <input type="checkbox" (change)="item.isCheck=true; checkLesson(item, 1)" [checked]="item.isCheck" [value]="item.isCheck" style="display:inline-block" name="1"/>
+      <input type="checkbox" (change)="item.isCheck=true; checkLesson(item, 2)" [checked]="item.isCheck" [value]="item.isCheck" style="display:inline-block" name="2" />
+      <input type="checkbox"(change)="item.isCheck=true; checkLesson(item, 3)" [checked]="item.isCheck" [value]="item.isCheck" style="display:inline-block" name="3"/>
+      <input type="checkbox" (change)="item.isCheck=true; checkLesson(item, 4)" [checked]="item.isCheck" [value]="item.isCheck" style="display:inline-block" name="4"/>
+      <input type="checkbox"(change)="item.isCheck=true; checkLesson(item, 5)" [checked]="item.isCheck" [value]="item.isCheck" style="display:inline-block"name="5" /> -->
+  
+      <input type="checkbox" (change)="onChecked(i,j)" [checked]="item.isCheck" [value]="item.isCheck" style="display:inline-block" name="1"/>
+      <!-- <input type="checkbox" (change)="item.isCheck=true; checkLesson(item, 2)" [checked]="item.isCheck" [value]="item.isCheck" style="display:inline-block" name="2" />
+      <input type="checkbox"(change)="item.isCheck=true; checkLesson(item, 3)" [checked]="item.isCheck" [value]="item.isCheck" style="display:inline-block" name="3"/>
+      <input type="checkbox" (change)="item.isCheck=true; checkLesson(item, 4)" [checked]="item.isCheck" [value]="item.isCheck" style="display:inline-block" name="4"/>
+      <input type="checkbox"(change)="item.isCheck=true; checkLesson(item, 5)" [checked]="item.isCheck" [value]="item.isCheck" style="display:inline-block"name="5" /> -->
+      </td>
+ 
+    </tr>
+</table>
+ <input type="submit" class="btn btn-success" name="hyfg" value="Save" />
+</form>
